@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'product' })
-export class ProductEntity {
+@Entity({ name: 'category' })
+export class CategoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -9,19 +9,7 @@ export class ProductEntity {
   name: string;
 
   @Column({ default: null })
-  categoryId: string;
-
-  @Column({ default: null })
   description: string;
-
-  @Column({ default: null })
-  filename: string;
-
-  @Column({ default: null })
-  urlFile: string;
-
-  @Column({ default: 0 })
-  views: number;
 
   @Column({ default: false })
   isPublished: boolean;

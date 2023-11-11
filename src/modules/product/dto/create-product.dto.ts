@@ -4,6 +4,9 @@ export class CreateProductDTO {
   @IsString({ message: 'Product name must be of type string' })
   name?: string;
 
+  @IsString({ message: 'Product name must be of type string' })
+  categoryId?: string;
+
   @IsString({ message: 'Product description must be of type string' })
   description?: string;
 

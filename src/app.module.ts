@@ -9,6 +9,7 @@ import { AuthInterceptor } from './modules/auth/interceptor/auth.interceptor';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import 'dotenv/config';
+import { CategoryModule } from './modules/category/category.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import 'dotenv/config';
     UserModule,
     ProductModule,
     AuthModule,
+    CategoryModule,
   ],
   controllers: [],
   providers: [
