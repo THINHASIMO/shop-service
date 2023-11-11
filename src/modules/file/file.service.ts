@@ -2,11 +2,12 @@ import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { FileDTO } from './dto/file.dto';
 import 'dotenv/config';
+import { FileEntity } from './entity/file.entity';
 @Injectable()
 export class FileService {
   constructor(
     @Inject('FILE_REPOSITORY')
-    private fileRepo: Repository<FileDTO>,
+    private fileRepo: Repository<FileEntity>,
   ) {}
 
   async getIndex(index: number) {

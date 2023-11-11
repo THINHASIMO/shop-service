@@ -14,6 +14,6 @@ export class CreateProductDTO {
   urlFile?: string;
 
   views?: number;
-
+  user?: number;
   isPublished?: boolean;
 }

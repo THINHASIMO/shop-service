@@ -1,12 +1,14 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository, UpdateResult } from 'typeorm';
 import { CreateProductDTO } from './dto/create-product.dto';
+import { UpdateProductDTO } from './dto/update-product.dto';
+import { ProductEntity } from './entities/product.entity';
 
 @Injectable()
 export class ProductService {
   constructor(
     @Inject('PRODUCT_REPOSITORY')
-    private productRepository: Repository<CreateProductDTO>,
+    private productRepository: Repository<ProductEntity>,
   ) {}
 
   async Page(): Promise<CreateProductDTO[]> {
@@ -21,15 +23,17 @@ export class ProductService {
     return await this.productRepository.save(product);
   }
 
-  async update(
-    id: any,
-    data: object,
-  ): Promise<CreateProductDTO | UpdateResult> {
-    const book = await this.productRepository.findOne(id).then((res) => res);
-    if (book) {
-      return await this.productRepository.update(id, data).then((res) => res);
+  async update(data: UpdateProductDTO) {
+    delete data.user;
+    const pro = await this.productRepository
+      .findOne({ where: { id: data.id } })
+      .then((res) => res);
+    if (pro) {
+      const result = await this.productRepository
+        .update(data.id, data)
+        .then((res) => res);
+      return result;
     }
-    return;
   }
 
   async remove(id: number) {
