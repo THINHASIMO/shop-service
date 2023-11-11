@@ -1,7 +1,7 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { FileDTO } from './dto/file.dto';
-
+import 'dotenv/config';
 @Injectable()
 export class FileService {
   constructor(
@@ -18,8 +18,8 @@ export class FileService {
     return file;
   }
 
-  async create(file: FileDTO): Promise<FileDTO> {
-    file.path = file.path.replace(/\\/g, '/');
+  async save(file: FileDTO): Promise<FileDTO> {
+    file.path = process.env.PREFIX_IMAGE + file.filename;
     return await this.fileRepo.save(file);
   }
 }

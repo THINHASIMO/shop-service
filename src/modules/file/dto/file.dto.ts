@@ -3,8 +3,8 @@ export class FileDTO {
   path?: string;
   mimetype?: string;
   size?: number;
-  originalName?: string;
-  fieldName?: string;
+  originalname?: string;
+  filename?: string;
   dateCreated?: Date;
   dateUpdated?: Date;
 }

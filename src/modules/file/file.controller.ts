@@ -12,6 +12,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
+import 'dotenv/config';
 
 @Controller('upload')
 export class FileController {
@@ -23,11 +24,11 @@ export class FileController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post('/file')
+  @Post('/image')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './uploads',
+        destination: process.env.FOLDER_IMAGE,
         filename: (req, file, callback) => {
           const uniqueSuffix =
             Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -39,6 +40,6 @@ export class FileController {
     }),
   )
   handleUpload(@UploadedFile() file: Express.Multer.File) {
-    return this.fileService.create(file);
+    return this.fileService.save(file);
   }
 }

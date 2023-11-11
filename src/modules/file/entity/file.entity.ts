@@ -21,10 +21,10 @@ export class FileEntity {
   size: number;
 
   @Column({ default: null })
-  originalName: string;
+  originalname: string;
 
   @Column({ default: null })
-  fieldName: string;
+  filename: string;
 
   @CreateDateColumn({ default: null })
   dateCreated: Date;
