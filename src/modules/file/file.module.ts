@@ -9,7 +9,7 @@ import { MulterModule } from '@nestjs/platform-express/multer';
   imports: [
     DataBaseConfig,
     MulterModule.register({
-      dest: './assets/image',
+      dest: './uploads', // specify the upload destination
     }),
   ],
   controllers: [FileController],

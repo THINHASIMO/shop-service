@@ -1,8 +1,10 @@
 export class FileDTO {
-  id: number;
-  name: string;
-  path: string;
-  mimetype: string;
-  dateCreated: Date;
-  dateUpdated: Date;
+  id?: number;
+  path?: string;
+  mimetype?: string;
+  size?: number;
+  originalName?: string;
+  fieldName?: string;
+  dateCreated?: Date;
+  dateUpdated?: Date;
 }

@@ -11,18 +11,24 @@ export class FileEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  name: string;
-
-  @Column()
+  @Column({ default: null })
   path: string;
 
-  @Column()
+  @Column({ default: null })
   mimetype: string;
 
-  @CreateDateColumn()
+  @Column({ default: null })
+  size: number;
+
+  @Column({ default: null })
+  originalName: string;
+
+  @Column({ default: null })
+  fieldName: string;
+
+  @CreateDateColumn({ default: null })
   dateCreated: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ default: null })
   dateUpdated: Date;
 }

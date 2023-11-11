@@ -13,6 +13,10 @@ export class ProductService {
     return this.productRepository.find();
   }
 
+  async getIndex(): Promise<CreateProductDTO[]> {
+    return this.productRepository.find();
+  }
+
   async create(product: CreateProductDTO): Promise<CreateProductDTO> {
     return await this.productRepository.save(product);
   }
