@@ -20,7 +20,16 @@ export class FileService {
   }
 
   async save(file: FileDTO): Promise<FileDTO> {
-    file.path = process.env.PREFIX_IMAGE + '/' + file.filename;
-    return await this.fileRepo.save(file);
+    if (file) {
+      file.path = process.env.PREFIX_IMAGE + '/' + file.filename;
+      return await this.fileRepo.save(file);
+    } else {
+      let res: any = {
+        data: null,
+        status: '200',
+        message: 'please choose file',
+      };
+      return res;
+    }
   }
 }
