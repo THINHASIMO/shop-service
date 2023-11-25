@@ -40,6 +40,7 @@ export class FileController {
     }),
   )
   handleUpload(@UploadedFile() file: Express.Multer.File) {
+    console.log('upload file image', file);
     return this.fileService.save(file);
   }
 }
