@@ -6,6 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix(process.env.PREFIX);
   await app.listen(3000);
-  console.log('service start: http://localhost:3000/v1/api');
+  console.log(`service start: http://localhost:${process.env.FE_PORT}/v1/api`);
 }
 bootstrap();
