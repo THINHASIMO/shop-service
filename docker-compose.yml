@@ -1,6 +1,7 @@
 version: '3'
 services:
   mysql-db:
+    container_name: database
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: 12345
@@ -8,7 +9,8 @@ services:
     ports:
       - "3306:3306"
 
-  nestjs-app:
+  app:
+    container_name: nestjs
     build: .
     ports:
       - "8080:3000"
