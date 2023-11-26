@@ -8,10 +8,15 @@ services:
       MYSQL_DATABASE: ams_shop
     ports:
       - "3306:3306"
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
 
   app:
     container_name: nestjs
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:3000"
     depends_on:
