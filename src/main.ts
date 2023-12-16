@@ -6,6 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix(process.env.PREFIX);
   await app.listen(3000);
-  console.log(`service running...`);
+  console.log(`service running....`);
 }
 bootstrap();
