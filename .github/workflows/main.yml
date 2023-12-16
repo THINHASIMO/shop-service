@@ -37,6 +37,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_PRIVATE_KEY }}
           port: ${{ secrets.EC2_POST }}
+          debug: true
           script: |
             cd /home/ubuntu/dev/backend
             docker-compose down
