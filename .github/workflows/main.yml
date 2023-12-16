@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.EC2_PRIVATE_KEY }}
           port: {{ secrets.EC2_POST }}
           script: |
-            cd /path/to/your/project
+            cd /home/ubuntu/dev/backend
             docker-compose down
             docker-compose pull
             docker-compose up -d
