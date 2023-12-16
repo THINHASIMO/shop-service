@@ -3,8 +3,8 @@ name: CI/CD nestjs
 on:
   push:
     branches:
-      - master
-      - dev
+      - 'master'
+      - 'dev'
 
 jobs:
   build:
