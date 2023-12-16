@@ -31,11 +31,8 @@ jobs:
           docker push $DOCKER_IMAGE_NAME:$IMAGE_TAG
           docker push $DOCKER_IMAGE_NAME:latest
 
-      - name: Set Permissions on Private Key
-        run: |
-          echo "${{ secrets.EC2_PRIVATE_KEY }}" > private-key.pem
-          chmod 600 private-key.pem
-        shell: bash
+      - name: Print Secret Value
+        run: echo "The value of EC2_PRIVATE_KEY is ${{ secrets.EC2_PRIVATE_KEY }}"
 
       - name: Deloy to EC2
         uses: appleboy/ssh-action@master 
