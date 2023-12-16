@@ -3,8 +3,8 @@ name: CI/CD nestjs
 on:
   push:
     branches:
-      - 'master'
-      - 'dev'
+      - "master"
+      - "dev"
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Docker
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Build and Push Docker Image
         run: | 
