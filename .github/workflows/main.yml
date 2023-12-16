@@ -31,6 +31,11 @@ jobs:
           docker push $DOCKER_IMAGE_NAME:$IMAGE_TAG
           docker push $DOCKER_IMAGE_NAME:latest
 
+      - name: Set Permissions on Private Key
+        run: |
+          cd $GITHUB_WORKSPACE  # Điều chỉnh đường dẫn nếu cần thiết
+          chmod 600 /path/to/your/private-key.pem
+        shell: bash  # Chỉ định shell sử dụng
       - name: Debug SSH Connection
         run: |
           ssh -v -o StrictHostKeyChecking=no -i ${{ secrets.EC2_PRIVATE_KEY }} ${{ secrets.EC2_HOST }} -p ${{ secrets.EC2_POST }} "echo Hello from remote"
