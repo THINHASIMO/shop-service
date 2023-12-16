@@ -8,6 +8,8 @@ services:
       MYSQL_DATABASE: ams_shop
     ports:
       - "3306:3306"
+    volumes:
+      - /var/lib/mysql
     build:
       context: ./mysql
       dockerfile: Dockerfile
@@ -27,3 +29,6 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: 12345
       DB_DATABASE: ams_shop
+    volumes:
+      - ./uploads:./uploads
+

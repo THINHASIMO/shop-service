@@ -1,0 +1,40 @@
+name: CI/CD nestjs
+on: 
+  push:
+    branches:
+      -dev
+jobs:
+  build:
+    run-on: ubuntu-lastest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: actions/setup-node@v2
+        with:
+         node-version: '14'
+
+      # - name: Build and Push Docker Image
+      #     run: | 
+      #       IMAGE_TAG=$(git rev-parse --short HEAD)
+      #       DOCKER_IMAGE_NAME="your-docker-image-name"
+      #       docker build -t $DOCKER_IMAGE_NAME:$IMAGE_TAG .
+      #       echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      #       docker tag $DOCKER_IMAGE_NAME:$IMAGE_TAG $DOCKER_IMAGE_NAME:latest
+      #       docker push $DOCKER_IMAGE_NAME:$IMAGE_TAG
+      #       docker push $DOCKER_IMAGE_NAME:latest
+
+      # - name: Deloy to EC2
+      #   uses: appleboy/ssh-action@v2
+      #   with:
+      #     host: ${{ secrets.EC2_HOST }}
+      #     username: ${{ secrets.EC2_PRIVATE_KEY }}
+      #     port: {{ secrets.EC2_POST }}
+      #     script: |
+      #       cd /path/to/your/project
+      #       docker-compose down
+      #       docker-compose pull
+      #       docker-compose up -d
+
